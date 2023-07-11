@@ -25,7 +25,10 @@ public class CarService {
        this.carMapper = carMapper;
    }
 
-    public CarDTO save(@Valid CarDTO carDTO) {
+    public CarDTO save(@Valid CarDTO carDTO) throws Exception {
+       if(!isValidBrand(carDTO.getBrand())) {
+           throw new Exception("Brand: We only accept Ford, Chevrolet, BMW, Volvo");
+       }
         Car car = carRepository.save(carMapper.toEntity(carDTO));
         return carMapper.toDto(car);
     }
@@ -35,5 +38,8 @@ public class CarService {
        return carMapper.toDto(car);
     }
 
-
+    private boolean isValidBrand(String brand) {
+        List<String> validBrands = Arrays.asList("Ford", "Chevrolet", "BMW", "Volvo");
+        return validBrands.contains(brand);
+    }
 }
