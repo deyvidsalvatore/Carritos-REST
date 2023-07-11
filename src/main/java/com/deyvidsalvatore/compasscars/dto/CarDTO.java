@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 public class CarDTO {
 
     @NotNull(message = "idChassi cannot be null")
+    @Positive(message = "idChassi must be greater than 0")
     private Long idChassi;
 
     @NotBlank(message = "name cannot be blank")
