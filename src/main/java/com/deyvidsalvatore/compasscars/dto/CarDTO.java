@@ -29,7 +29,7 @@ public class CarDTO {
     @NotNull(message = "fabricationYear cannot be null")
     private String fabricationYear;
 
-    @NotNull(message = "color cannot be blank")
+    @NotBlank(message = "color cannot be blank")
     @NotNull(message = "color cannot be null")
     private String color;
 
